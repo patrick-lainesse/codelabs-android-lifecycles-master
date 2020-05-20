@@ -24,5 +24,5 @@ import androidx.lifecycle.ViewModel;
  */
 public class SeekBarViewModel extends ViewModel {
 
-    public MutableLiveData<Integer> seekbarValue = new MutableLiveData<>();
+    public MutableLiveData seekbarValue = new MutableLiveData<>();
 }

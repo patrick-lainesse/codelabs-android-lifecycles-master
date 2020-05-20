@@ -18,20 +18,33 @@ package com.example.android.lifecycles.step6;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.SavedStateHandle;
 import androidx.lifecycle.ViewModel;
 
 public class SavedStateViewModel extends ViewModel {
 
     // TODO: Create constructor and use the LiveData from SavedStateHandle.
+    private SavedStateHandle mstate;
 
-    private MutableLiveData<String> name = new MutableLiveData<>();
+    //private MutableLiveData<String> name = new MutableLiveData<>();
+    private static final String NAME_KEY = "name";
+
+    public SavedStateViewModel(SavedStateHandle savedStateHandle) {
+        mstate = savedStateHandle;
+    }
 
     // Expose an immutable LiveData
     LiveData<String> getName() {
-        return name;
+        return mstate.getLiveData(NAME_KEY);
     }
 
     void saveNewName(String newName) {
-        name.setValue(newName);
+        mstate.set(NAME_KEY, newName);
     }
+    /*LiveData<String> getName() {
+        return name;
+    }*/
+    /*void saveNewName(String newName) {
+        name.setValue(newName);
+    }*/
 }
